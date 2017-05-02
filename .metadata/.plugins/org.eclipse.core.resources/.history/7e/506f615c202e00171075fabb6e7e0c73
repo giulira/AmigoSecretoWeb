@@ -1,0 +1,84 @@
+package br.com.fiap.amigoSecreto.entity;
+
+import java.sql.Blob;
+import java.util.Date;
+
+public class Grupo {
+	
+	//idGrupo
+	//idAdmin
+	
+	private String nome;
+	private String descricao;
+	private String tipo;
+	private Date dataSorteio;
+	private double valorMinimo;
+	private double valorMaximo;
+	private int status;
+	private Date dataEntrega;
+	private String local;
+	private Blob foto;
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	public Date getDataSorteio() {
+		return dataSorteio;
+	}
+	public void setDataSorteio(Date dataSorteio) {
+		this.dataSorteio = dataSorteio;
+	}
+	public double getValorMinimo() {
+		return valorMinimo;
+	}
+	public void setValorMinimo(double valorMinimo) {
+		this.valorMinimo = valorMinimo;
+	}
+	public double getValorMaximo() {
+		return valorMaximo;
+	}
+	public void setValorMaximo(double valorMaximo) {
+		this.valorMaximo = valorMaximo;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public Date getDataEntrega() {
+		return dataEntrega;
+	}
+	public void setDataEntrega(Date dataEntrega) {
+		this.dataEntrega = dataEntrega;
+	}
+	public String getLocal() {
+		return local;
+	}
+	public void setLocal(String local) {
+		this.local = local;
+	}
+	public Blob getFoto() {
+		return foto;
+	}
+	public void setFoto(Blob foto) {
+		this.foto = foto;
+	}
+	
+	
+
+}
