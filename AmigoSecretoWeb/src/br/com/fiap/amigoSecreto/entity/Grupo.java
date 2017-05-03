@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,16 +15,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="grupo")
 public class Grupo implements Serializable{
-	
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID_GRUPO", unique=true, nullable=false, length=10)
-	private int idGrupo;
+	private Integer idGrupo;
 	@Column(name="NOME", nullable=false, length=150)
 	private String nome;
 	@Column(name="DESCRICAO", nullable=false, length=200)
@@ -33,11 +36,11 @@ public class Grupo implements Serializable{
 	@Column(name="DATA_SORTEIO", nullable=false, length=10)
 	private Date dataSorteio;
 	@Column(name="VALOR_MINIMO", nullable=false, length=10)
-	private double valorMinimo;
+	private Double valorMinimo;
 	@Column(name="VALOR_MAXIMO", nullable=false, length=10)
-	private double valorMaximo;
+	private Double valorMaximo;
 	@Column(name="STATUS", nullable=false, length=10)
-	private int status;
+	private Integer status;
 	@Column(name="DATA_ENTREGA", nullable=false)
 	private Date dataEntrega;
 	@Column(name="LOCAL", nullable=false, length=200)
@@ -50,27 +53,14 @@ public class Grupo implements Serializable{
 	updatable=false)})
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
-	@ManyToMany(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
-	@JoinTable(name="GRUPO_USUAIO", catalog="amigosecreto", joinColumns =
-	{@JoinColumn(name="ID_GRUPO", nullable=false, updatable=false)},
-	inverseJoinColumns = {@JoinColumn(name="ID_AMIGO", nullable=false,
-	updatable=false)})
-	private List<Usuario> amigos = new ArrayList<Usuario>();
-	
-	@ManyToMany(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
-	@JoinTable(name="GRUPO_USUAIO", catalog="amigosecreto", joinColumns =
-	{@JoinColumn(name="ID_GRUPO", nullable=false, updatable=false)},
-	inverseJoinColumns = {@JoinColumn(name="ID_ADMIN", nullable=false,
-	updatable=false)})
-	private List<Usuario> listaAdmin = new ArrayList<Usuario>();
-	
-	//private Blob foto;
+	@Column(name="ID_ADMIN", nullable=false, length=10)
+	private int idAdministrador;
 
-	public int getIdGrupo() {
+	public Integer getIdGrupo() {
 		return idGrupo;
 	}
 
-	public void setIdGrupo(int idGrupo) {
+	public void setIdGrupo(Integer idGrupo) {
 		this.idGrupo = idGrupo;
 	}
 
@@ -106,27 +96,27 @@ public class Grupo implements Serializable{
 		this.dataSorteio = dataSorteio;
 	}
 
-	public double getValorMinimo() {
+	public Double getValorMinimo() {
 		return valorMinimo;
 	}
 
-	public void setValorMinimo(double valorMinimo) {
+	public void setValorMinimo(Double valorMinimo) {
 		this.valorMinimo = valorMinimo;
 	}
 
-	public double getValorMaximo() {
+	public Double getValorMaximo() {
 		return valorMaximo;
 	}
 
-	public void setValorMaximo(double valorMaximo) {
+	public void setValorMaximo(Double valorMaximo) {
 		this.valorMaximo = valorMaximo;
 	}
 
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -154,25 +144,15 @@ public class Grupo implements Serializable{
 		this.usuarios = usuarios;
 	}
 
-	public List<Usuario> getAmigos() {
-		return amigos;
+	public int getIdAdministrador() {
+		return idAdministrador;
 	}
 
-	public void setAmigos(List<Usuario> amigos) {
-		this.amigos = amigos;
+	public void setIdAdministrador(int idAdministrador) {
+		this.idAdministrador = idAdministrador;
 	}
+	
+	//private Blob foto;
 
-	public List<Usuario> getListaAdmin() {
-		return listaAdmin;
-	}
-
-	public void setListaAdmin(List<Usuario> listaAdmin) {
-		this.listaAdmin = listaAdmin;
-	}
-	
-	
-	
-	
-	
 	
 }

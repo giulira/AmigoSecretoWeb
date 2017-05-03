@@ -24,6 +24,7 @@ public class ListaDesejos implements Serializable{
 	private double preco;
 	@Column(name="ID_USUARIO", nullable=false, length=10)
 	private int idUsuario;
+	
 	public int getIdLista() {
 		return idLista;
 	}
