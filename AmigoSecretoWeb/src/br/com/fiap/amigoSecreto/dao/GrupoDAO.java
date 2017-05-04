@@ -1,5 +1,12 @@
 package br.com.fiap.amigoSecreto.dao;
 
-public class GrupoDAO {
+import br.com.fiap.amigoSecreto.dao.util.GenericDao;
+import br.com.fiap.amigoSecreto.entity.Grupo;
+
+public class GrupoDAO  extends GenericDao<Grupo> {
+
+	public GrupoDAO() {
+		super(Grupo.class);
+	}
 
 }

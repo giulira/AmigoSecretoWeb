@@ -29,11 +29,11 @@ public class SorteioAmigo implements Serializable{
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="ID_GRUPO") 
-	private Grupo idGrupo;
+	private Grupo grupo;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="ID_AMIGO") 
-	private Usuario Amigo;
+	private Usuario amigo;
 
 	public Integer getId() {
 		return id;
@@ -51,22 +51,20 @@ public class SorteioAmigo implements Serializable{
 		this.usuario = usuario;
 	}
 
-	public Grupo getIdGrupo() {
-		return idGrupo;
+	public Grupo getGrupo() {
+		return grupo;
 	}
 
-	public void setIdGrupo(Grupo idGrupo) {
-		this.idGrupo = idGrupo;
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
 	}
 
 	public Usuario getAmigo() {
-		return Amigo;
+		return amigo;
 	}
 
 	public void setAmigo(Usuario amigo) {
-		Amigo = amigo;
+		this.amigo = amigo;
 	}
-	
-	
 
 }

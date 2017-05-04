@@ -24,17 +24,17 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID_USUARIO", unique=true, nullable=false, length=10)
 	private Integer idUsuario;
-	@Column(name="USERNAME", nullable=false, length=10)
+	@Column(name="USERNAME", nullable=false, length=50)
 	private String username;
-	@Column(name="SENHA", nullable=false, length=10)
+	@Column(name="SENHA", nullable=false, length=50)
 	private String senha;
-	@Column(name="NOME", nullable=false, length=10)
+	@Column(name="NOME", nullable=false, length=50)
 	private String nome;
-	@Column(name="CPF", nullable=false, length=10)
+	@Column(name="CPF", nullable=false, length=20)
 	private String cpf;
-	@Column(name="EMAIL", nullable=false, length=10)
+	@Column(name="EMAIL", nullable=false, length=50)
 	private String email;
-	@Column(name="SEXO", nullable=false, length=10)
+	@Column(name="SEXO", nullable=false, length=50)
 	private String sexo;
 	//private Blob fotoUsuario;
 	@ManyToMany(fetch=FetchType.LAZY, mappedBy="usuarios")
