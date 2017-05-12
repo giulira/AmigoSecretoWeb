@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_131">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_121">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
@@ -25,5 +25,17 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jboss-logging-annotations-1.2.0.Beta1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.19-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/commons.collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/commons-digester-2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/javax.faces-2.1.14.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/javax.servlet.jsp.jstl-1.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/jsf-api-2.0.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/jsf-api-2.0.10-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/jsf-impl-2.0.11-02.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/jsf-impl-2.0.11-02-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/biblioteca java - Cópia/org.apache.commons.logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Phillipe/Desktop/biblioteca java - Cópia/primefaces-6.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
