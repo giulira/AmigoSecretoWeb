@@ -1,6 +1,10 @@
 package br.com.fiap.amigoSecreto.dao;
 
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+
 import br.com.fiap.amigoSecreto.dao.util.GenericDao;
+import br.com.fiap.amigoSecreto.dao.util.JpaUtil;
 import br.com.fiap.amigoSecreto.entity.Grupo;
 
 public class GrupoDAO  extends GenericDao<Grupo> {
@@ -9,4 +13,20 @@ public class GrupoDAO  extends GenericDao<Grupo> {
 		super(Grupo.class);
 	}
 
+	public Grupo buscarGrupo(String chave){
+		try {
+
+			em = JpaUtil.getEntityManager();
+			em.getTransaction().begin();
+
+			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g where g.nome = :nome ", Grupo.class);
+
+			query.setParameter("nome", chave);
+
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+		
+	}
 }
