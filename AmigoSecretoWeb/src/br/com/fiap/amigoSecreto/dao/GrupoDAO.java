@@ -1,5 +1,8 @@
 package br.com.fiap.amigoSecreto.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
@@ -24,6 +27,25 @@ public class GrupoDAO  extends GenericDao<Grupo> {
 			query.setParameter("nome", chave);
 
 			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+		
+	}
+	
+	public List<Grupo> listarGrupo(String chave){
+		List<Grupo> listaGrupos = new ArrayList<Grupo>();
+		try {
+
+			em = JpaUtil.getEntityManager();
+			em.getTransaction().begin();
+
+			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g where g.nome like :nome ", Grupo.class);
+
+			query.setParameter("nome", "%"+chave+ "%");
+			listaGrupos = query.getResultList();
+			return listaGrupos;
+			
 		} catch (NoResultException e) {
 			return null;
 		}
