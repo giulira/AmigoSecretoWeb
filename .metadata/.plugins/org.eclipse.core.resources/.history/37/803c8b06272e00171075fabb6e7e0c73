@@ -1,7 +1,0 @@
-package br.com.fiap.amigoSecreto.entity;
-
-public class ListaDesejos {
-	
-	private int idLista;
-
-}

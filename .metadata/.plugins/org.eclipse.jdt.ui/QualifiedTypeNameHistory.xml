@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.sql.Blob"/>
 <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
 <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
@@ -12,6 +11,16 @@
 <fullyQualifiedTypeName name="javax.persistence.JoinTable"/>
 <fullyQualifiedTypeName name="javax.persistence.Column"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
-<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="br.com.fiap.amigoSecreto.dao.UsuarioDAO"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="br.com.fiap.amigoSecreto.entity.Grupo"/>
+<fullyQualifiedTypeName name="br.com.fiap.amigoSecreto.dao.GrupoDAO"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="br.com.fiap.amigoSecreto.entity.Usuario"/>
+<fullyQualifiedTypeName name="br.com.fiap.amigoSecreto.dao.ListaDesejoDAO"/>
+<fullyQualifiedTypeName name="br.com.fiap.amigoSecreto.entity.ListaDesejos"/>
+<fullyQualifiedTypeName name="br.com.fiap.amigoSecreto.dao.SorteioAmigoDAO"/>
+<fullyQualifiedTypeName name="br.com.fiap.amigoSecreto.entity.SorteioAmigo"/>
 </qualifiedTypeNameHistroy>
