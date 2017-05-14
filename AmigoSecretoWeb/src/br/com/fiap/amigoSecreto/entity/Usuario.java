@@ -37,10 +37,10 @@ public class Usuario implements Serializable{
 	@Column(name="SEXO", nullable=false, length=50)
 	private String sexo;
 	//private Blob fotoUsuario;
-	@ManyToMany(fetch=FetchType.LAZY, mappedBy="usuarios")
+	@ManyToMany(fetch=FetchType.EAGER, mappedBy="usuarios")
 	private List<Grupo> grupos = new ArrayList<Grupo>();	
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.LAZY,
+	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER,
 			mappedBy="usuario") 
 	private List<SorteioAmigo> sorteioLista = new ArrayList<SorteioAmigo>();
 

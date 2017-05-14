@@ -15,13 +15,12 @@
 		    <p:column headerText="Nome do grupo">
 		        <h:outputText value="#{lista.nome}" />
 		    </p:column>
-		    <p:column headerText="Descrição do grupo">
+		    <p:column headerText="DescriÃ§Ã£o do grupo">
 		        <h:outputText value="#{lista.descricao}" />
 		    </p:column>
 		     <p:column>
-		        <h:commandLink action="#{grupoMB.associarAoGrupo}" value="Entrar no grupo">
-	        		 <f:setPropertyActionListener target="#{grupoMB.idGrupo}" value="#{lista.idGrupo}" />
-		        </h:commandLink>
+		       <h:commandButton action="#{grupoMB.associarAoGrupo}" value="Entrar no grupo">
+		        </h:commandButton>
 		    </p:column>
     </p:dataTable>
     
