@@ -10,24 +10,24 @@ import org.primefaces.context.RequestContext;
 @ManagedBean
 public class UserLoginView {
      
-    private String username;
+    private String email;
      
-    private String password;
+    private String senha;
  
     public String getUsername() {
-        return username;
+        return email;
     }
  
     public void setUsername(String username) {
-        this.username = username;
+        this.email = username;
     }
  
     public String getPassword() {
-        return password;
+        return senha;
     }
  
     public void setPassword(String password) {
-        this.password = password;
+        this.senha = password;
     }
    
     public void login(ActionEvent event) {
@@ -35,9 +35,9 @@ public class UserLoginView {
         FacesMessage message = null;
         boolean loggedIn = false;
          
-        if(username != null && username.equals("admin") && password != null && password.equals("admin")) {
+        if(email != null && email.equals("admin") && senha != null && senha.equals("admin")) {
             loggedIn = true;
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", username);
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", email);
         } else {
             loggedIn = false;
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
