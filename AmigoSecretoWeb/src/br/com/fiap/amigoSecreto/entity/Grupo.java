@@ -46,7 +46,7 @@ public class Grupo implements Serializable{
 	private Double valorMinimo;
 	@Column(name="VALOR_MAXIMO", nullable=false, length=10)
 	private Double valorMaximo;
-	@Column(name="STATUS", nullable=false, length=10)
+	@Column(name="STATUS", nullable=false, length=100)
 	private String status;
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATA_ENTREGA", nullable=false)

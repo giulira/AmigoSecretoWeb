@@ -1,5 +1,6 @@
 package br.com.fiap.amigoSecreto.dao.util;
 
+import br.com.fiap.amigoSecreto.bean.SorteioAmigoBean;
 import br.com.fiap.amigoSecreto.dao.GrupoDAO;
 import br.com.fiap.amigoSecreto.dao.ListaDesejoDAO;
 import br.com.fiap.amigoSecreto.dao.SorteioAmigoDAO;
@@ -76,6 +77,7 @@ public class Teste {
 		listaDesejoDAO.adicionar(desejo1);
 	*/
 		
+		/*
 		Grupo grupo = new Grupo();
 		grupo = grupoDAO.buscar(1);
 		
@@ -99,7 +101,14 @@ public class Teste {
 		
 		sorteioAmigoDAO.adicionar(sorteioAmigo1);
 		sorteioAmigoDAO.adicionar(sorteioAmigo2);
+		*/
 		
+		SorteioAmigoBean sa = new SorteioAmigoBean();
+		Grupo g = new Grupo();
+		g.setIdGrupo(1);
+		sa.setGrupo(g);
+		
+		sa.sorteio();
 	}
 
 }

@@ -33,6 +33,23 @@ public class GrupoDAO  extends GenericDao<Grupo> {
 		
 	}
 	
+	public Grupo buscarGrupoPorId(Integer id){
+		try {
+
+			em = JpaUtil.getEntityManager();
+			em.getTransaction().begin();
+
+			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g where g.id = :id ", Grupo.class);
+
+			query.setParameter("id", id);
+
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+		
+	}	
+	
 	public List<Grupo> listarGrupo(String chave){
 		List<Grupo> listaGrupos = new ArrayList<Grupo>();
 		try {

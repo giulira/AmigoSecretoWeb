@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 @Entity
 @Table(name="usuario")
 @ManagedBean(name="beanUsuario")
@@ -47,6 +48,17 @@ public class Usuario implements Serializable{
 	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER,
 			mappedBy="usuario") 
 	private List<SorteioAmigo> sorteioLista = new ArrayList<SorteioAmigo>();
+
+	@Transient
+	private Usuario amigoSecreto;	
+	
+	public Usuario getAmigoSecreto() {
+		return amigoSecreto;
+	}
+
+	public void setAmigoSecreto(Usuario amigoSecreto) {
+		this.amigoSecreto = amigoSecreto;
+	}
 
 	public Integer getIdUsuario() {
 		return idUsuario;

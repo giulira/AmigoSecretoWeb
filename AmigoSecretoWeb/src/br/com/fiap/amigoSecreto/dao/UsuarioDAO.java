@@ -38,4 +38,17 @@ public class UsuarioDAO  extends GenericDao<Usuario> {
 			return null;
 		} 
 	}
+	
+	public Usuario buscaUsuarioByUsername(String username){
+		try {
+			em = JpaUtil.getEntityManager();
+			em.getTransaction().begin();
+			TypedQuery<Usuario> query = em.createQuery("select u from Usuario u where u.username = :username", Usuario.class);
+			query.setParameter("username", username);
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		} 
+	}	
+	
 }

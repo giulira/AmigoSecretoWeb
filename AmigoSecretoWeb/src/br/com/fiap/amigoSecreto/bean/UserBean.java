@@ -6,8 +6,8 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.fiap.amigoSecreto.dao.RepositoryDao;
 import br.com.fiap.amigoSecreto.dao.UsuarioDAO;
+import br.com.fiap.amigoSecreto.dao.util.RepositoryDao;
 import br.com.fiap.amigoSecreto.entity.Usuario;
 
 @ManagedBean
