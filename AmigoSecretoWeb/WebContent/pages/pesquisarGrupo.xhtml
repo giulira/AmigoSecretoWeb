@@ -5,25 +5,25 @@
 <h:head>
 </h:head>
 <h:body>
-	<h:form>
+	<h:form id="pesquisaForm">
 		<h:outputText value="Pesquisar Grupo"/>
 		<h:inputText value="#{grupoMB.nomeGrupo}"/>
-		<h:commandButton type="submit" action="#{grupoMB.pesquisarGrupo}" value="Pesquisar"/>
-		
-		
-		<p:dataTable var="lista" value="#{grupoMB.listaGrupos}">
+		<h:commandButton  action="#{grupoMB.pesquisarGrupo}" value="Pesquisar"/>
+	
+		<p:dataTable id="listaGrupos" var="lista" value="#{grupoMB.listaGrupos}" >
+			
 		    <p:column headerText="Nome do grupo">
 		        <h:outputText value="#{lista.nome}" />
 		    </p:column>
-		    <p:column headerText="DescriÃ§Ã£o do grupo">
+		    <p:column headerText="Descrição do grupo">
 		        <h:outputText value="#{lista.descricao}" />
 		    </p:column>
-		     <p:column>
-		       <h:commandButton action="#{grupoMB.associarAoGrupo}" value="Entrar no grupo">
-		        </h:commandButton>
-		    </p:column>
-    </p:dataTable>
-    
+		    <p:column>
+      			<p:commandButton action="#{grupoMB.associarAoGrupo}" value="Entrar no grupo">
+      				<f:param value="#{lista.idGrupo}" name="id"/>
+      			</p:commandButton>
+      		</p:column>
+    	</p:dataTable>
     
     <h:commandButton type="submit" action="#{grupoMB.listarMeusGrupo}" value="Meus Grupos"/>
     

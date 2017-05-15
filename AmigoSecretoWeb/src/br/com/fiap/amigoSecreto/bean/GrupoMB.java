@@ -2,9 +2,11 @@ package br.com.fiap.amigoSecreto.bean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import br.com.fiap.amigoSecreto.dao.GrupoDAO;
 import br.com.fiap.amigoSecreto.dao.UsuarioDAO;
@@ -17,7 +19,7 @@ public class GrupoMB {
 	private List<Grupo> listaGrupos = new ArrayList<Grupo>();
 	private GrupoDAO dao = new GrupoDAO();
 	private UsuarioDAO userDao = new UsuarioDAO();
-	private String idGrupo;
+	private String idGrupoSelected;
 	
 	public GrupoMB() {
 		super();
@@ -34,11 +36,14 @@ public class GrupoMB {
 	}
 	
 	public void associarAoGrupo(){
-		System.out.println("===========idGrupo "+idGrupo);
+		//String idGrupo = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idGrupo");
+		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+
+		String id = params.get("id");
 		Usuario usuario = new Usuario();
 		usuario = userDao.buscar(1);
 		Grupo grupoSelecionado = new Grupo();
-		grupoSelecionado = dao.buscarGrupo(idGrupo);
+		grupoSelecionado = dao.buscarGrupo(idGrupoSelected);
 		List<Grupo> lista = new ArrayList<Grupo>();
 		lista.add(grupoSelecionado);
 		usuario.setGrupos(lista);
@@ -49,7 +54,6 @@ public class GrupoMB {
 	
 	public String listarMeusGrupo(){
 		List<Grupo> lista = new ArrayList<Grupo>();
-		//lista = dao.listar();
 		Usuario usuario = new Usuario();
 		usuario = userDao.buscar(1);
 		lista = usuario.getGrupos();
@@ -74,13 +78,19 @@ public class GrupoMB {
 		this.nomeGrupo = nomeGrupo;
 	}
 
-	public String getIdGrupo() {
-		return idGrupo;
+	public String getIdGrupoSelected() {
+		return idGrupoSelected;
 	}
 
-	public void setIdGrupo(String idGrupo) {
-		this.idGrupo = idGrupo;
+	public void setIdGrupoSelected(String idGrupoSelected) {
+		this.idGrupoSelected = idGrupoSelected;
 	}
 
+	
+
+	/*public void onRowSelect(SelectEvent event) {
+		Integer id =  ((Grupo)event.getObject()).getIdGrupo();
+		setIdGrupoSelected(String.valueOf(id));
+    }*/
 	
 }
