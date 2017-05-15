@@ -87,10 +87,7 @@ public class SorteioAmigoBean {
 				
 				if(usuario.equals(usuarioAuxiliar)) {
 					Random random = new Random();
-					
-					//Pego todos e sorteio um, menos ele mesmo para trocar os amigos.
 					Usuario usuarioSorteado = todos.get(random.nextInt(todos.size() - 1));
-					
 					usuario.setAmigoSecreto(usuarioSorteado.getAmigoSecreto());
 					usuarioSorteado.setAmigoSecreto(usuarioAuxiliar);
 	
@@ -112,9 +109,7 @@ public class SorteioAmigoBean {
 	}
 	
 
-	protected int retornaIndice( int indiceUsuarioNaLista, 
-								 int maxParaSorteio, 
-								 List<Integer> jaSorteados ) {
+	protected int retornaIndice( int indiceUsuarioNaLista, int maxParaSorteio, List<Integer> jaSorteados ) {
 		
 		Random random = new Random();
 		int indice = random.nextInt(maxParaSorteio);
