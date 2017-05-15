@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +17,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
-@Table(name="usuario") 
+@Table(name="usuario")
+@ManagedBean(name="beanUsuario")
+@RequestScoped
 public class Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -115,7 +119,4 @@ public class Usuario implements Serializable{
 	public void setSorteioLista(List<SorteioAmigo> sorteioLista) {
 		this.sorteioLista = sorteioLista;
 	}
-	
-	
-	
 }
