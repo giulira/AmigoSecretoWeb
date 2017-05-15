@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +18,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="grupo")
+@ManagedBean(name="beanGrupo")
+@RequestScoped
 public class Grupo implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -33,6 +39,7 @@ public class Grupo implements Serializable{
 	private String descricao;
 	@Column(name="TIPO", nullable=false, length=200)
 	private String tipo;
+	@Temporal(TemporalType.DATE)
 	@Column(name="DATA_SORTEIO", nullable=false, length=10)
 	private Date dataSorteio;
 	@Column(name="VALOR_MINIMO", nullable=false, length=10)
@@ -40,14 +47,15 @@ public class Grupo implements Serializable{
 	@Column(name="VALOR_MAXIMO", nullable=false, length=10)
 	private Double valorMaximo;
 	@Column(name="STATUS", nullable=false, length=10)
-	private Integer status;
+	private String status;
+	@Temporal(TemporalType.DATE)
 	@Column(name="DATA_ENTREGA", nullable=false)
 	private Date dataEntrega;
 	@Column(name="LOCAL", nullable=false, length=200)
 	private String local;	
 	
 	@ManyToMany(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
-	@JoinTable(name="GRUPO_USUAIO", catalog="amigosecreto", joinColumns =
+	@JoinTable(name="GRUPO_USUARIO", catalog="amigosecreto", joinColumns =
 	{@JoinColumn(name="ID_GRUPO", nullable=true, updatable=false)},
 	inverseJoinColumns = {@JoinColumn(name="ID_USUARIO", nullable=false,
 	updatable=false)})
@@ -112,11 +120,11 @@ public class Grupo implements Serializable{
 		this.valorMaximo = valorMaximo;
 	}
 
-	public Integer getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
