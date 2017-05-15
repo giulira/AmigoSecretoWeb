@@ -2,7 +2,6 @@ package br.com.fiap.amigoSecreto.dao.util;
 
 import java.util.List;
 
-import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
 
 public class GenericDao<T> implements Dao<T> {
@@ -55,12 +54,6 @@ public class GenericDao<T> implements Dao<T> {
 	public void remover(T entidade) {
 		em = JpaUtil.getEntityManager();
 		em.remove(entidade);
-	}
-
-	@Override
-	public void login(ActionEvent event) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

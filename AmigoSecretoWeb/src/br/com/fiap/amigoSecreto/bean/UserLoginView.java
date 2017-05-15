@@ -4,69 +4,46 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
+ 
 import org.primefaces.context.RequestContext;
-
-
-import br.com.fiap.amigoSecreto.dao.UsuarioDAO;
-import br.com.fiap.amigoSecreto.entity.Usuario;
  
 @ManagedBean
 public class UserLoginView {
      
-    private String email; 
+    private String email;
+     
     private String senha;
-    private UsuarioDAO userDao = new UsuarioDAO();
+ 
+    public String getUsername() {
+        return email;
+    }
+ 
+    public void setUsername(String username) {
+        this.email = username;
+    }
+ 
+    public String getPassword() {
+        return senha;
+    }
+ 
+    public void setPassword(String password) {
+        this.senha = password;
+    }
    
-    public String login( ) {
+    public void login(ActionEvent event) {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage message = null;
         boolean loggedIn = false;
-        Usuario usuario = new Usuario(); 
-        if(email != null && email.equals("userDao") && senha != null && senha.equals("userDao")) {
+         
+        if(email != null && email.equals("admin") && senha != null && senha.equals("admin")) {
             loggedIn = true;
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem vindo", email);
-            usuario=userDao.buscaUsuarioLogin(email, senha);   
-            return "teste.xhtml";
-           
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Welcome", email);
         } else {
             loggedIn = false;
-            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro ao Logar", "Usuario ou senha invalidos");
+            message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
         }
          
         FacesContext.getCurrentInstance().addMessage(null, message);
         context.addCallbackParam("loggedIn", loggedIn);
-		return "login.xhtml";
-    }
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-	public UsuarioDAO getUserDao() {
-		return userDao;
-	}
-
-	public void setUserDao(UsuarioDAO userDao) {
-		this.userDao = userDao;
-	}
-    
-   
-    
-    
-    
-    
-    
+    }   
 }
