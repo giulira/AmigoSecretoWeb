@@ -99,6 +99,13 @@ public class GrupoMB {
 		return listaGrupos;
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	public void setListaGrupos(List<Grupo> listaGrupos) {
 		this.listaGrupos = listaGrupos;
 	}

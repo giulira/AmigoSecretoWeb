@@ -18,18 +18,18 @@ public class Teste {
 		SorteioAmigoDAO sorteioAmigoDAO = new SorteioAmigoDAO(); 
 				
 
-		// TESTE ADICIONANDO USUARIO
-		/*Usuario user = new Usuario();
-		user.setCpf("25095426803");
+		
+		Usuario user = new Usuario();
+		user.setCpf("333333333333");
 		user.setEmail("teste@teste.com.br");
-		user.setNome("Giuliane Lira");
+		user.setNome("Phillipe Carvalho");
 		user.setSenha("123");
-		user.setSexo("Feminino");
-		user.setUsername("giulira");
+		user.setSexo("Masculino");
+		user.setUsername("admin");
 		
 		userDao.adicionar(user);
 		
-		Usuario user = new Usuario();
+		/*Usuario user = new Usuario();
 		user.setCpf("58525395382");
 		user.setEmail("teste123@teste.com.br");
 		user.setNome("João Mendes");

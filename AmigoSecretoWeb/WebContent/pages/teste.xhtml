@@ -8,14 +8,14 @@
 	<h:form id="frmAluno">
 		<p:panelGrid columns="2" style="horizontal-align:center">
 			<h:outputText value="Usuario:" />
-			<p:inputText id="usuario" />
+			<p:inputText id="usuario" value="#{userLoginView.email}" />
 			<h:outputLabel for="senha" value="Senha:" />
-			<p:inputText id="senha"/>
+			<p:inputText id="senha" value="#{userLoginView.senha}" />
 		</p:panelGrid>
 		<br></br>
-		<p:button value="Login" >
+		<h:commandButton type="submit" action="#{userLoginView.login}" value="Login"/>
     
-</p:button>
+
 	</h:form>
 
 </body>
