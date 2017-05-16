@@ -22,7 +22,7 @@ public class GrupoMB {
 	private List<Grupo> listaGrupos = new ArrayList<Grupo>();
 	private GrupoDAO dao = new GrupoDAO();
 	private UsuarioDAO userDao = new UsuarioDAO();
-	private String idGrupo;
+	private String idGrupoSelected;
 	
 	@ManagedProperty(value="#{beanGrupo}")
 	private Grupo grupo;
@@ -71,11 +71,10 @@ public class GrupoMB {
 	}
 	
 	public void associarAoGrupo(){
-		System.out.println("===========idGrupo "+idGrupo);
 		Usuario usuario = new Usuario();
 		usuario = userDao.buscar(1);
 		Grupo grupoSelecionado = new Grupo();
-		grupoSelecionado = dao.buscarGrupo(idGrupo);
+		grupoSelecionado = dao.buscarGrupo(idGrupoSelected);
 		List<Grupo> lista = new ArrayList<Grupo>();
 		lista.add(grupoSelecionado);
 		usuario.setGrupos(lista);
@@ -111,13 +110,15 @@ public class GrupoMB {
 		this.nomeGrupo = nomeGrupo;
 	}
 
-	public String getIdGrupo() {
-		return idGrupo;
+	public String getIdGrupoSelected() {
+		return idGrupoSelected;
 	}
 
-	public void setIdGrupo(String idGrupo) {
-		this.idGrupo = idGrupo;
+	public void setIdGrupoSelected(String idGrupoSelected) {
+		this.idGrupoSelected = idGrupoSelected;
 	}
+
+	
 
 	
 }
