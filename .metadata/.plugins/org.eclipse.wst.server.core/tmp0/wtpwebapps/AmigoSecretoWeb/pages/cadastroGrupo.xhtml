@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="frmAluno">
+		<p:panelGrid columns="2" style="horizontal-align:center">
+			<h:outputText value="Nome:" />
+			<p:inputText id="nome" value="#{grupoMB.grupo.nome}" />
+			<h:outputLabel for="descricao" value="Descrição:" />
+			<p:inputText id="descricao" value="#{grupoMB.grupo.descricao}" />
+			
+ 			<p:outputLabel for="dataSorteio" value="Data do Sorteio:" />
+        	<p:calendar id="dataSorteio" value="#{grupoMB.grupo.dataSorteio}" />
+ 
+			<h:outputLabel for="valorMinimo" value="Valor Minimo:" />
+			<p:inputText id="valorMinimo" value="#{grupoMB.grupo.valorMinimo}" />
+			<h:outputLabel for="valorMaximo" value="Valor Maximo:" />
+			<p:inputText id="valorMaximo" value="#{grupoMB.grupo.valorMaximo}" />
+
+			<p:outputLabel for="dataEntrega" value="Data de Entrega:" />
+        	<p:calendar id="dataEntrega" value="#{grupoMB.grupo.dataEntrega}" />
+        	 
+			<h:outputLabel for="tipo" value="Tipo: " />
+			<p:inputText id="tipo" value="#{grupoMB.grupo.tipo}" /> 
+			        	 
+			<h:outputLabel for="local" value="Local:" />
+			<p:inputText id="local" value="#{grupoMB.grupo.local}" />
+		</p:panelGrid>
+		<br></br>
+		
+		<p:commandButton value="Salvar" ajax="false" action="#{grupoMB.incluirGrupo}" />
+	</h:form>
+</h:body>
+</html>

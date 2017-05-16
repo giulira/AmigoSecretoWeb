@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h:form id="frmAluno">
+		<p:panelGrid columns="2" style="horizontal-align:center">
+			<h:outputText value="Usuario:" />
+			<p:inputText id="usuario" value="#{userBean.usuario.username}" />
+			<h:outputLabel for="senha" value="Senha:" />
+			<p:inputText id="senha" value="#{userBean.usuario.senha}" />
+			<h:outputLabel for="nome" value="Nome:" />
+			<p:inputText id="nome" value="#{userBean.usuario.nome}" />
+			<h:outputLabel for="cpf" value="CPF:" />
+			<p:inputText id="cpf" value="#{userBean.usuario.cpf}"/>
+			<h:outputLabel for="email" value="E-mail:" />
+			<p:inputText id="email" value="#{userBean.usuario.email}"/>
+			<h:outputLabel for="sexo" value="Sexo:" />
+			<p:inputText id="sexo" value="#{userBean.usuario.sexo}"/>
+		</p:panelGrid>
+		<br></br>
+		
+		<p:commandButton value="Salvar" ajax="false" action="#{userBean.incluirUsuario}" />
+		
+		</h:form>
+
+</h:body>
+</html>

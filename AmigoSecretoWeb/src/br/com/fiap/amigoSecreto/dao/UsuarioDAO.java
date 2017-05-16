@@ -16,36 +16,44 @@ public class UsuarioDAO  extends GenericDao<Usuario> {
 	
 	public Usuario buscaUsuarioLogin(String email, String senha){
 		try {
+			Usuario usuario = new Usuario();
 			em = JpaUtil.getEntityManager();
 			em.getTransaction().begin();
 			TypedQuery<Usuario> query = em.createQuery("select u from Usuario u where u.email = :email and u.senha = :senha", Usuario.class);
 			query.setParameter("email", email);
 			query.setParameter("senha", senha);
-			return query.getSingleResult();
+			usuario = query.getSingleResult();
+			return usuario;
 		} catch (NoResultException e) {
 			return null;
 		} 
 	}
-	
+
 	public Usuario buscaUsuario(String nome){
 		try {
+			Usuario usuario = new Usuario();
 			em = JpaUtil.getEntityManager();
 			em.getTransaction().begin();
-			TypedQuery<Usuario> query = em.createQuery("select u from Usuario u where u.nome = :nome", Usuario.class);
-			query.setParameter("nome", nome);
-			return query.getSingleResult();
+			TypedQuery<Usuario> query = em.createQuery("select u from Usuario u where u.nome like :nome", Usuario.class);
+			query.setParameter("nome","%"+nome+"%" );
+			usuario = (Usuario) query.getSingleResult();
+			return usuario;
 		} catch (NoResultException e) {
 			return null;
 		} 
 	}
+
 	
 	public Usuario buscaUsuarioByUsername(String username){
 		try {
+			Usuario usuario = new Usuario();
 			em = JpaUtil.getEntityManager();
 			em.getTransaction().begin();
 			TypedQuery<Usuario> query = em.createQuery("select u from Usuario u where u.username = :username", Usuario.class);
 			query.setParameter("username", username);
-			return query.getSingleResult();
+			usuario = (Usuario) query.getSingleResult();
+			
+			return usuario;
 		} catch (NoResultException e) {
 			return null;
 		} 

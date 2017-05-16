@@ -122,7 +122,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\FIAP\java web\trabalhofinal\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\FIAP\java web\trabalhofinal\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\AmigoSecretoWeb" path="/AmigoSecretoWeb" reloadable="true" source="org.eclipse.jst.jee.server:AmigoSecretoWeb"/></Host>
+      <Context docBase="C:\Users\Giu\git\AmigoSecretoWeb\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\Giu\git\AmigoSecretoWeb\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\AmigoSecretoWeb" path="/AmigoSecretoWeb" reloadable="true" source="org.eclipse.jst.jee.server:AmigoSecretoWeb"/></Host>
     </Engine>
   </Service>
 </Server>
