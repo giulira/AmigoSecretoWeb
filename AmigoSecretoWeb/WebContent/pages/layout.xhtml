@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet library="css" name="estilos.css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<div id="cabecalho">
+		<ui:insert name="header">
+		</ui:insert>
+	</div>
+	
+	<div id="formulario">
+		<ui:insert name="conteudo">
+		</ui:insert>
+	</div>
+	<div id="formulario">
+		<ui:insert name="erro">
+		</ui:insert>
+	</div>
+	
+</h:body>
+</html>
