@@ -29,8 +29,8 @@ public class UserLoginView {
 	}
    
 	public String validarUsuario() throws Exception{
-   		
-		if(dao.buscaUsuarioLogin(usuario.getEmail(), usuario.getSenha()) != null){
+   		usuario = dao.buscaUsuarioLogin(usuario.getEmail(), usuario.getSenha());
+		if(usuario != null){
 			return "menu.xhtml";
 		} else {
 			FacesContext context = FacesContext.getCurrentInstance();

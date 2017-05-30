@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import br.com.fiap.amigoSecreto.dao.util.GenericDao;
 import br.com.fiap.amigoSecreto.dao.util.JpaUtil;
 import br.com.fiap.amigoSecreto.entity.Grupo;
+import br.com.fiap.amigoSecreto.entity.Usuario;
 
 public class GrupoDAO  extends GenericDao<Grupo> {
 
@@ -49,6 +50,23 @@ public class GrupoDAO  extends GenericDao<Grupo> {
 		}
 		
 	}	
+	
+	public List<Grupo> buscarGrupoPorUsuario(Usuario usuario){
+		try {
+
+			em = JpaUtil.getEntityManager();
+			em.getTransaction().begin();
+
+			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g JOIN g.usuarios u where u.idUsuario = :id ", Grupo.class);
+
+			query.setParameter("id", usuario.getIdUsuario());
+
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+		
+	}
 	
 	public List<Grupo> listarGrupo(String chave){
 		List<Grupo> listaGrupos = new ArrayList<Grupo>();

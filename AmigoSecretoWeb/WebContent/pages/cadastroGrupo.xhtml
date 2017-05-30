@@ -31,7 +31,7 @@
 		</p:panelGrid>
 		<br></br>
 		
-		<p:commandButton value="Salvar" ajax="false" action="#{grupoMB.incluirGrupo}" />
+		<p:commandButton value="Salvar" ajax="false" action="#{grupoMB.incluirGrupo(loginUsuarios.usuario)}" />
 		<p:commandButton value="Cancelar" ajax="false" action="menu.xhtml" />
 	</h:form>
 </h:body>

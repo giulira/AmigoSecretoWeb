@@ -1,12 +1,13 @@
 package br.com.fiap.amigoSecreto.bean;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
@@ -16,28 +17,19 @@ import br.com.fiap.amigoSecreto.entity.Grupo;
 import br.com.fiap.amigoSecreto.entity.SorteioAmigo;
 import br.com.fiap.amigoSecreto.entity.Usuario;
 
-@ManagedBean
+@ManagedBean(name="sorteioBean")
 @RequestScoped
 public class SorteioAmigoBean {
-	
-	@ManagedProperty(value="#{beanGrupo}")
-	private Grupo grupo;
 
-	public Grupo getGrupo() {
-		return grupo;
-	}
-
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
-	
 	public void sorteio(){
-		
 		FacesContext context = FacesContext.getCurrentInstance();
+		Map<String,String> params =	context.getExternalContext().getRequestParameterMap();
+		String idGrupo = params.get("action");
+				
 		FacesMessage msg = new FacesMessage();
 		GrupoDAO grupoDAO = new GrupoDAO();
 		SorteioAmigoDAO sorteioDAO = new SorteioAmigoDAO();
-		Grupo grupoEntity = grupoDAO.buscarGrupoPorId(grupo.getIdGrupo());
+		Grupo grupoEntity = grupoDAO.buscarGrupoPorId(Integer.valueOf(idGrupo));
 		List<Usuario> todos = grupoEntity.getUsuarios();
 		
 		try {		
@@ -45,6 +37,7 @@ public class SorteioAmigoBean {
 				msg.setSummary("ERRO:");
 				msg.setDetail("É necessário ter mais de dois usuários para realizar o sorteio!");
 				msg.setSeverity(FacesMessage.SEVERITY_INFO);
+				System.out.println("Insuficiente usuarios");
 			} else {
 				sortearAmigos(todos);
 				
@@ -52,7 +45,7 @@ public class SorteioAmigoBean {
 					System.out.println("O usuario " + u.getNome() + " sorteou o amigo: " + u.getAmigoSecreto().getNome());
 					SorteioAmigo sorteado = new SorteioAmigo();
 					sorteado.setAmigo(u.getAmigoSecreto());
-					sorteado.setGrupo(grupo);
+					sorteado.setGrupo(grupoEntity);
 					sorteado.setUsuario(u);
 					sorteioDAO.adicionar(sorteado);
 				}
@@ -66,12 +59,16 @@ public class SorteioAmigoBean {
 			msg.setSummary("ERRO:");
 			msg.setDetail(e.getMessage());
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);	
+			System.out.println("ERRO: " + e.getMessage());
 		}	finally {
 			grupoEntity.setStatus("Realizado");
 			grupoDAO.atualizar(grupoEntity);
 		}
-		//context.addMessage(null, msg);
-		
+		try {
+			context.getExternalContext().redirect("grupoDetalhes.xhtml?grupo=" + idGrupo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	protected void sortearAmigos(List<Usuario> todos) {

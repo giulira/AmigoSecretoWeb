@@ -39,14 +39,21 @@ public class GrupoMB {
 		super();
 	}
 	
-	public void incluirGrupo(){
+	public String incluirGrupo(Usuario usuario){
+
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage msg = new FacesMessage();
 		try {
 			grupo.setStatus("Pendente");
-			grupo.setIdAdministrador(1);
+			grupo.setIdAdministrador(usuario.getIdUsuario());			
 			GrupoDAO dao = RepositoryDao.getGruposDao();
 			dao.adicionar(grupo);
+			
+			List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+			listaUsuarios.add(usuario);
+			grupo.setUsuarios(listaUsuarios);
+			dao.atualizar(grupo);			
+			
 			msg.setSummary("OK");
 			msg.setDetail("Grupo " + grupo.getNome() + " incluído");
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);
@@ -57,7 +64,9 @@ public class GrupoMB {
 			msg.setDetail(e.getMessage());
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);			
 		}
+		
 		context.addMessage(null, msg);		
+		return "menu.xhtml";
 	}
 
 	public void pesquisarGrupo() {
@@ -83,7 +92,7 @@ public class GrupoMB {
         setListaGrupos(dao.listar());
 	}
 	
-	public String listarMeusGrupo(){
+	public String listarMeusGrupos(){
 		List<Grupo> lista = new ArrayList<Grupo>();
 		//lista = dao.listar();
 		Usuario usuario = new Usuario();
@@ -92,6 +101,14 @@ public class GrupoMB {
 		setListaGrupos(lista);
 		
 		return "meusGrupos.xhtml";
+	}
+	
+	public List<Grupo> buscarGrupoPorUsuario(Usuario usuario){
+		return dao.buscarGrupoPorUsuario(usuario);		
+	}
+	
+	public Grupo buscarGrupoPorId(Integer id){
+		return dao.buscarGrupoPorId(id);
 	}
 
 	public List<Grupo> getListaGrupos() {

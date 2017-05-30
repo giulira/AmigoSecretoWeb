@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<h:form>
+	
+		<p:dataTable var="lista" value="#{grupoMB.buscarGrupoPorId(param['grupo'])}">
+		
+			<p:column>
+				<h:outputText value="Nome do grupo:" /><br/>
+				<h:outputText value="Status:" /><br/>
+				<h:outputText value="Tipo:" /><br/>
+				<h:outputText value="Local:" /><br/>
+				<h:outputText value="Descrição:" /><br/>
+				<h:outputText value="Valor minimo:" /><br/>
+				<h:outputText value="Valor maximo:" /><br/>
+				<h:outputText value="Data sorteio:" /><br/>
+				<h:outputText value="Data entrega:" /><br/>
+				<h:outputText value="Administrador do grupo:" /><br/>
+			</p:column>
+			
+			<p:column>
+		        <h:outputText value="#{lista.nome}" /><br/>
+		        <h:outputText value="#{lista.status}" /><br/>
+		        <h:outputText value="#{lista.tipo}" /><br/>
+		        <h:outputText value="#{lista.local}" /><br/>
+		        <h:outputText value="#{lista.descricao}" /><br/>
+		        <h:outputText value="#{lista.valorMinimo}" /><br/>
+		        <h:outputText value="#{lista.valorMaximo}" /><br/>
+		        <h:outputText value="#{lista.dataSorteio}" /><br/>
+		        <h:outputText value="#{lista.dataEntrega}" /><br/>
+		        <h:outputText value="#{userBean.getUsuarioById(lista.idAdministrador).nome}" /><br/>
+        	</p:column>
+    	</p:dataTable>
+
+    	<p:commandButton value="Voltar" ajax="false" action="meusGrupos.xhtml"/>
+    	<p:commandButton value="Realizar Sorteio" ajax="false" action="#{sorteioBean.sorteio()}" onclick="confirm('Deseja realizar o sorteio?');">
+    		<f:param name="action" value="#{param['grupo']}" />
+    	</p:commandButton>
+	</h:form>
+</h:body>
+</html>	

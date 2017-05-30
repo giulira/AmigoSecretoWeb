@@ -7,14 +7,16 @@
 <h:body>
 	<h:form>
 	
-		<p:dataTable var="lista" value="#{grupoMB.listaGrupos}">
+		<p:dataTable var="lista" value="#{grupoMB.buscarGrupoPorUsuario(loginUsuarios.usuario)}">
 		    <p:column headerText="Nome do grupo">
-		        <h:outputText value="#{lista.nome}" />
+		        <a href="grupoDetalhes.xhtml?grupo=#{lista.idGrupo}"><h:outputText value="#{lista.nome}" /></a>
 		    </p:column>
 		    <p:column headerText="Descrição do grupo">
 		        <h:outputText value="#{lista.descricao}" />
 		    </p:column>		    
     	</p:dataTable>
+    	
+    	<p:commandButton value="Voltar" ajax="false" action="menu.xhtml" />
     
 	</h:form>
 </h:body>
