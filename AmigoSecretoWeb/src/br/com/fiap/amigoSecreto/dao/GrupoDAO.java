@@ -86,4 +86,21 @@ public class GrupoDAO  extends GenericDao<Grupo> {
 		}
 		
 	}
+	
+	public List<Usuario> listarUsuariosDoGrupo(Integer id){
+		try {
+
+			em = JpaUtil.getEntityManager();
+			em.getTransaction().begin();
+
+			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g JOIN g.usuarios u where idGrupo = :id ", Grupo.class);
+
+			query.setParameter("id", id);
+
+			return query.getSingleResult().getUsuarios();
+		} catch (NoResultException e) {
+			return null;
+		}
+		
+	}
 }

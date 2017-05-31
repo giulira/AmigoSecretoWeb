@@ -13,6 +13,7 @@ import javax.faces.context.FacesContext;
 
 import br.com.fiap.amigoSecreto.dao.GrupoDAO;
 import br.com.fiap.amigoSecreto.dao.SorteioAmigoDAO;
+import br.com.fiap.amigoSecreto.dao.UsuarioDAO;
 import br.com.fiap.amigoSecreto.entity.Grupo;
 import br.com.fiap.amigoSecreto.entity.SorteioAmigo;
 import br.com.fiap.amigoSecreto.entity.Usuario;
@@ -21,6 +22,18 @@ import br.com.fiap.amigoSecreto.entity.Usuario;
 @RequestScoped
 public class SorteioAmigoBean {
 
+	public SorteioAmigoDAO dao = new SorteioAmigoDAO();
+	
+	public SorteioAmigo buscarAmigoSecretoPorUsuario(Integer usuarioId){
+		return dao.buscarAmigoSecretoPorUsuario(usuarioId);
+	}
+	
+	public Usuario buscarUsuarioAmigoSecreto(Integer usuarioId){
+		UsuarioDAO userDAO = new UsuarioDAO();
+		Usuario user = userDAO.buscaUsuarioPorId(buscarAmigoSecretoPorUsuario(usuarioId).getAmigo().getIdUsuario());
+		return user;
+	}
+	
 	public void sorteio(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		Map<String,String> params =	context.getExternalContext().getRequestParameterMap();

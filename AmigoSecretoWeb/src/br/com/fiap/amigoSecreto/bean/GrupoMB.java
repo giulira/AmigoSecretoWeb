@@ -59,7 +59,7 @@ public class GrupoMB {
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);
 			
 		} catch (Exception e) {
-			
+			System.out.println("ERRO GRUPO: " + e.getMessage());
 			msg.setSummary("ERRO:");
 			msg.setDetail(e.getMessage());
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);			

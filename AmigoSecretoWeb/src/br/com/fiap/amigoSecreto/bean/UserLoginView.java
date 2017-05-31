@@ -29,7 +29,7 @@ public class UserLoginView {
 	}
    
 	public String validarUsuario() throws Exception{
-   		usuario = dao.buscaUsuarioLogin(usuario.getEmail(), usuario.getSenha());
+   		usuario = dao.buscaUsuarioLogin(usuario.getUsername(), usuario.getSenha());
 		if(usuario != null){
 			return "menu.xhtml";
 		} else {

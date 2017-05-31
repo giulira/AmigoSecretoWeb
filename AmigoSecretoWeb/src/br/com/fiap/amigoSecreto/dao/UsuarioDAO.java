@@ -14,13 +14,13 @@ public class UsuarioDAO  extends GenericDao<Usuario> {
 	}
 
 	
-	public Usuario buscaUsuarioLogin(String email, String senha){
+	public Usuario buscaUsuarioLogin(String username, String senha){
 		try {
 			Usuario usuario = new Usuario();
 			em = JpaUtil.getEntityManager();
 			em.getTransaction().begin();
-			TypedQuery<Usuario> query = em.createQuery("select u from Usuario u where u.email = :email and u.senha = :senha", Usuario.class);
-			query.setParameter("email", email);
+			TypedQuery<Usuario> query = em.createQuery("select u from Usuario u where u.username = :username and u.senha = :senha", Usuario.class);
+			query.setParameter("username", username);
 			query.setParameter("senha", senha);
 			usuario = query.getSingleResult();
 			return usuario;

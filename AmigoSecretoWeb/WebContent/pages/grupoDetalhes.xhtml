@@ -36,6 +36,13 @@
         	</p:column>
     	</p:dataTable>
 
+		<p:outputPanel rendered="#{grupoMB.buscarGrupoPorId(param['grupo']).status == 'Realizado'}">
+			<br/>
+			<h:outputLabel value="Amigo Sorteado:  "/>
+			<h:outputText value="#{sorteioBean.buscarUsuarioAmigoSecreto(loginUsuarios.usuario.idUsuario).nome}" />
+			<br/><br/>
+		</p:outputPanel>
+		
     	<p:commandButton value="Voltar" ajax="false" action="meusGrupos.xhtml"/>
     	<p:commandButton value="Realizar Sorteio" ajax="false" action="#{sorteioBean.sorteio()}" onclick="confirm('Deseja realizar o sorteio?');">
     		<f:param name="action" value="#{param['grupo']}" />
