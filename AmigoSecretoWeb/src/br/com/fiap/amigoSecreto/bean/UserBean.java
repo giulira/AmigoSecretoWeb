@@ -27,13 +27,12 @@ public class UserBean {
 	
 	public UsuarioDAO dao = RepositoryDao.getUsuariosDao();
 	
-	public void incluirUsuario(){
+	public String incluirUsuario(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage msg = new FacesMessage();
 		try {
 			dao.adicionar(usuario);
-			msg.setSummary("OK");
-			msg.setDetail("Usuário " + usuario.getNome() + " incluído");
+			msg.setDetail("Usuário " + usuario.getNome() + " incluído com sucesso!");
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);
 			
 		} catch (Exception e) {
@@ -42,7 +41,9 @@ public class UserBean {
 			msg.setDetail(e.getMessage());
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);			
 		}
-		context.addMessage(null, msg);		
+		context.addMessage(null, msg);	
+		return "login.xhtml";
+
 	}
 	
 	public Usuario getUsuarioById(Integer id){

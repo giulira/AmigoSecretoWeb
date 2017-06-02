@@ -42,7 +42,7 @@
 			<h:outputText value="#{sorteioBean.buscarUsuarioAmigoSecreto(loginUsuarios.usuario.idUsuario).nome}" />
 			<br/><br/>
 		</p:outputPanel>
-		
+		<br/>
     	<p:commandButton value="Voltar" ajax="false" action="meusGrupos.xhtml"/>
     	<p:commandButton value="Realizar Sorteio" ajax="false" action="#{sorteioBean.sorteio()}" onclick="confirm('Deseja realizar o sorteio?');">
     		<f:param name="action" value="#{param['grupo']}" />

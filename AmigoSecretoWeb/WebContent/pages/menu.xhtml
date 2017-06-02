@@ -3,25 +3,27 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	>
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Menu de Opções</title>
+	
+	<style>
+	h2{    
+	font-family: 'latoregular', "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #5C666A;
+    }
+	</style>
 </h:head>
 <h:body>
-	<ui:composition template="layout.xhtml">
-		<ui:define name="conteudo">
-
-			<h1>Menu de Opções</h1>
-			<h2>Seja bem-vindo(a), #{loginUsuarios.usuario.nome}</h2>
-			<h:form>
-				<ul>
-					<li><h:commandLink value="Cadastro de Usuários" action="cadastroUsuario.xhtml" /></li>
-					<li><h:commandLink value="Cadastro de Grupo" action="cadastroGrupo.xhtml" /></li>
-					<li><h:commandLink value="Meus grupos" action="meusGrupos.xhtml" /></li>													
-				</ul>
-			</h:form>
-		</ui:define>
-	</ui:composition>
+	<h2>Seja bem-vindo(a), #{loginUsuarios.usuario.nome}</h2>
+	<h:form>	
+		<p:menu>
+			<p:submenu label="Menu de opções">
+				<p:menuitem value="Cadastro de Grupo" outcome="cadastroGrupo.xhtml"/>
+				<p:menuitem value="Meus grupos" outcome="meusGrupos.xhtml"/>
+			</p:submenu>
+        </p:menu>
+	</h:form>
 
 </h:body>
 </html>

@@ -8,7 +8,7 @@ import org.primefaces.model.UploadedFile;
  
 @ManagedBean
 public class FileUploadView {
-     
+     /*
     private UploadedFile file;
  
     public UploadedFile getFile() {
@@ -25,4 +25,5 @@ public class FileUploadView {
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
+    */
 }

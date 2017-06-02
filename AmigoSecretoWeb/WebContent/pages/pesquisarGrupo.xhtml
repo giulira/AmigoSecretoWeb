@@ -22,7 +22,7 @@
 		<h:inputText value="#{grupoMB.nomeGrupo}"/>
 		<h:commandButton  action="#{grupoMB.pesquisarGrupo}" value="Pesquisar"/>
 	
-		<h:dataTable id="listaGrupos" var="lista" value="#{grupoMB.listaGrupos}" >
+		<p:dataTable id="listaGrupos" var="lista" value="#{grupoMB.listaGrupos}" >
 			
 		    <h:column>
 		      <f:facet name="header">
@@ -42,9 +42,9 @@
       				<f:setPropertyActionListener value="#{lista.idGrupo}" target="#{grupoMB.idGrupoSelected}"/>
       			</h:commandButton>
       		</h:column>
-    	</h:dataTable>
+    	</p:dataTable>
     
-    <h:commandButton type="submit" action="#{grupoMB.listarMeusGrupo}" value="Meus Grupos"/>
+    <p:commandButton type="submit" action="#{grupoMB.listarMeusGrupo}" value="Meus Grupos"/>
     
 	</h:form>
 </h:body>

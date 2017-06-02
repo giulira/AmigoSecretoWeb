@@ -27,6 +27,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsf-impl-2.0.11-02.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.apache.commons.logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/primefaces-6.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/redmond-1.0.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/C-_opensource_ApacheTomcat8">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
@@ -37,5 +38,8 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Redmond"/>
+	<classpathentry kind="lib" path="C:/Users/logonrm/Downloads/primefaces-6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/logonrm/Downloads/redmond-1.0.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
