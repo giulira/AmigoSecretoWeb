@@ -7,7 +7,7 @@
 <h:body>
 	<h:form>
 	
-		<p:dataTable var="lista" value="#{grupoMB.buscarGrupoPorUsuario(loginUsuarios.usuario)}">
+		<p:dataTable var="lista" value="#{grupoMB.buscarGrupoPorUsuario(loginUsuarios.usuario)}" emptyMessage="Não há registros na lista">
 		    <p:column headerText="Nome do grupo">
 		        <a href="grupoDetalhes.xhtml?grupo=#{lista.idGrupo}"><h:outputText value="#{lista.nome}" /></a>
 		    </p:column>

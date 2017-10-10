@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -63,6 +64,10 @@ public class Grupo implements Serializable{
 	
 	@Column(name="ID_ADMIN", nullable=false, length=10)
 	private Integer idAdministrador;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ID_EMPRESA") 
+	private Empresa empresa;
 
 	public Integer getIdGrupo() {
 		return idGrupo;
@@ -159,9 +164,13 @@ public class Grupo implements Serializable{
 	public void setIdAdministrador(Integer idAdministrador) {
 		this.idAdministrador = idAdministrador;
 	}
-	
-	//private Blob foto;
 
-	
-	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
 }

@@ -47,6 +47,10 @@
     	<p:commandButton value="Realizar Sorteio" ajax="false" action="#{sorteioBean.sorteio()}" onclick="confirm('Deseja realizar o sorteio?');">
     		<f:param name="action" value="#{param['grupo']}" />
     	</p:commandButton>
+    	
+    	<p:commandButton action="#{grupoMB.associarAoGrupo(loginUsuarios.usuario)}" value="Entrar no grupo">
+    		<f:param name="idgrupo" value="#{param['grupo']}" />
+    	</p:commandButton>
 	</h:form>
 </h:body>
 </html>	

@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +33,10 @@ public class ListaDesejos implements Serializable{
 	private Integer idUsuario;
 	@Column(name="ID_GRUPO", nullable=false, length=10)
 	private Integer idGrupo;
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ID_EMPRESA") 
+	private Empresa empresa;
 	
 	public Integer getIdLista() {
 		return idLista;
@@ -73,7 +80,11 @@ public class ListaDesejos implements Serializable{
 	public void setIdGrupo(Integer idGrupo) {
 		this.idGrupo = idGrupo;
 	}
-	
-	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
 	
 }

@@ -7,22 +7,26 @@
 <h:body>
 	<h:form id="frmAluno">
 		<p:panelGrid columns="2" style="horizontal-align:center">
+			
+			<h:outputText value="Empresa" />
+			<p:inputText id="empresa" value="#{empresaBean.empresa.nome}" />
+			
 			<h:outputText value="Usuario:" />
-			<p:inputText id="usuario" value="#{userBean.usuario.username}" />
+			<p:inputText id="usuario" value="#{empresaBean.usuario.username}" />
 			<h:outputLabel for="senha" value="Senha:" />
-			<p:inputText id="senha" value="#{userBean.usuario.senha}" />
+			<p:inputText id="senha" value="#{empresaBean.usuario.senha}" />
 			<h:outputLabel for="nome" value="Nome:" />
-			<p:inputText id="nome" value="#{userBean.usuario.nome}" />
+			<p:inputText id="nome" value="#{empresaBean.usuario.nome}" />
 			<h:outputLabel for="cpf" value="CPF:" />
-			<p:inputText id="cpf" value="#{userBean.usuario.cpf}"/>
+			<p:inputText id="cpf" value="#{empresaBean.usuario.cpf}"/>
 			<h:outputLabel for="email" value="E-mail:" />
-			<p:inputText id="email" value="#{userBean.usuario.email}"/>
+			<p:inputText id="email" value="#{empresaBean.usuario.email}"/>
 			<h:outputLabel for="sexo" value="Sexo:" />
-			<p:inputText id="sexo" value="#{userBean.usuario.sexo}"/>
+			<p:inputText id="sexo" value="#{empresaBean.usuario.sexo}"/>
 		</p:panelGrid>
 		<br></br>
 		
-		<p:commandButton value="Salvar" ajax="false" action="#{userBean.incluirUsuario(loginUsuarios.usuario)}" />
+		<p:commandButton value="Salvar" ajax="false" action="#{empresaBean.incluirEmpresa}" />
 		<p:commandButton value="Cancelar" ajax="false" action="menu.xhtml" />
 		
 		</h:form>

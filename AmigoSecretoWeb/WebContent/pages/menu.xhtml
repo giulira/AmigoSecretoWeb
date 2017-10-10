@@ -16,11 +16,14 @@
 </h:head>
 <h:body>
 	<h2>Seja bem-vindo(a), #{loginUsuarios.usuario.nome}</h2>
+	<p:messages showSummary="true" showDetail="true"></p:messages>
 	<h:form>	
 		<p:menu>
 			<p:submenu label="Menu de opções">
+				<p:menuitem value="Cadastro de usuario" outcome="cadastroUsuario.xhtml"/>
 				<p:menuitem value="Cadastro de Grupo" outcome="cadastroGrupo.xhtml"/>
 				<p:menuitem value="Meus grupos" outcome="meusGrupos.xhtml"/>
+				<p:menuitem value="Pesquisar grupos" outcome="pesquisarGrupo.xhtml"/>
 			</p:submenu>
         </p:menu>
 	</h:form>

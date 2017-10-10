@@ -13,7 +13,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -41,6 +43,13 @@ public class Usuario implements Serializable{
 	private String email;
 	@Column(name="SEXO", nullable=false, length=50)
 	private String sexo;
+	@Column(name="ADMIN", nullable=false, length=50)
+	private boolean isAdmin;	
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ID_EMPRESA") 
+	private Empresa empresa;
+	
 	//private Blob fotoUsuario;
 	@ManyToMany(fetch=FetchType.EAGER, mappedBy="usuarios")
 	private List<Grupo> grupos = new ArrayList<Grupo>();	
@@ -130,5 +139,21 @@ public class Usuario implements Serializable{
 
 	public void setSorteioLista(List<SorteioAmigo> sorteioLista) {
 		this.sorteioLista = sorteioLista;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 }

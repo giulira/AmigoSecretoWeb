@@ -2,6 +2,7 @@ package br.com.fiap.amigoSecreto.bean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -19,10 +20,13 @@ import br.com.fiap.amigoSecreto.entity.Usuario;
 @RequestScoped
 public class GrupoMB {
 	private String nomeGrupo;
-	private List<Grupo> listaGrupos = new ArrayList<Grupo>();
+	
 	private GrupoDAO dao = new GrupoDAO();
 	private UsuarioDAO userDao = new UsuarioDAO();
 	private String idGrupoSelected;
+	
+
+	private List<Grupo> listaGrupos = new ArrayList<Grupo>();
 	
 	@ManagedProperty(value="#{beanGrupo}")
 	private Grupo grupo;
@@ -45,7 +49,7 @@ public class GrupoMB {
 		FacesMessage msg = new FacesMessage();
 		try {
 			grupo.setStatus("Pendente");
-			grupo.setIdAdministrador(usuario.getIdUsuario());			
+			grupo.setIdAdministrador(usuario.getIdUsuario());
 			GrupoDAO dao = RepositoryDao.getGruposDao();
 			dao.adicionar(grupo);
 			
@@ -54,8 +58,10 @@ public class GrupoMB {
 			grupo.setUsuarios(listaUsuarios);
 			dao.atualizar(grupo);			
 			
-			msg.setSummary("OK");
-			msg.setDetail("Grupo " + grupo.getNome() + " incluído");
+			grupo.setEmpresa(usuario.getEmpresa());
+			dao.atualizar(grupo);			
+			
+			msg.setDetail("Grupo " + grupo.getNome() + " incluido com sucesso!");
 			msg.setSeverity(FacesMessage.SEVERITY_INFO);
 			
 		} catch (Exception e) {
@@ -69,38 +75,39 @@ public class GrupoMB {
 		return "menu.xhtml";
 	}
 
-	public void pesquisarGrupo() {
+	public void pesquisarGrupo(Usuario usuario) {
 	        FacesMessage message = null;
 	        if(nomeGrupo == null || nomeGrupo.equals("") ) {
-	            message = new FacesMessage("Digite o nome do grupo que você deseja pesquisar.");
+	            message = new FacesMessage("Digite o nome do grupo que voce deseja pesquisar.");
 	        }
-	       listaGrupos = dao.listarGrupo(nomeGrupo);
-	       
-	        setListaGrupos(listaGrupos);
+	       listaGrupos = dao.listarGrupo(nomeGrupo,usuario);
+	       setListaGrupos(listaGrupos);
 	}
 	
-	public void associarAoGrupo(){
-		Usuario usuario = new Usuario();
-		usuario = userDao.buscar(1);
-		Grupo grupoSelecionado = new Grupo();
-		grupoSelecionado = dao.buscarGrupo(idGrupoSelected);
-		List<Grupo> lista = new ArrayList<Grupo>();
-		lista.add(grupoSelecionado);
-		usuario.setGrupos(lista);
-		userDao.atualizar(usuario);
-	       
-        setListaGrupos(dao.listar());
-	}
-	
-	public String listarMeusGrupos(){
-		List<Grupo> lista = new ArrayList<Grupo>();
-		//lista = dao.listar();
-		Usuario usuario = new Usuario();
-		usuario = userDao.buscar(1);
-		lista = usuario.getGrupos();
-		setListaGrupos(lista);
+	public void associarAoGrupo(Usuario usuario){
+
+		FacesMessage msg = new FacesMessage();
+		FacesContext context = FacesContext.getCurrentInstance();
 		
-		return "meusGrupos.xhtml";
+		try{
+			Map<String,String> params =	context.getExternalContext().getRequestParameterMap();
+			String idGrupo = params.get("idgrupo");
+			
+			List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+			listaUsuarios.add(usuario);
+			Grupo g1 = dao.buscarGrupoPorId(Integer.valueOf(idGrupo));
+			g1.setUsuarios(listaUsuarios);
+			dao.atualizar(g1);
+			
+			msg.setDetail("Grupo " + grupo.getNome() + " incluido com sucesso!");
+			msg.setSeverity(FacesMessage.SEVERITY_INFO);
+		
+		} catch (Exception e) {
+			System.out.println("ERRO GRUPO: " + e.getMessage());
+			msg.setSummary("ERRO:");
+			msg.setDetail(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_INFO);		
+		}
 	}
 	
 	public List<Grupo> buscarGrupoPorUsuario(Usuario usuario){

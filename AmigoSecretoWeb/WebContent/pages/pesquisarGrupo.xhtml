@@ -6,53 +6,28 @@
 </h:head>
 <h:body>
 	<h:form id="pesquisaForm">
-		<h:outputText value="Pesquisar Grupo"/>
-		<h:inputText value="#{grupoMB.nomeGrupo}"/>
-		<h:commandButton  action="#{grupoMB.pesquisarGrupo}" value="Pesquisar"/>
+		<p:outputLabel value="Pesquisar Grupo"/>
+		<p:inputText value="#{grupoMB.nomeGrupo}"/>
+		<p:commandButton  action="#{grupoMB.pesquisarGrupo(loginUsuarios.usuario)}" value="Pesquisar" update="tableForm"/>
+	</h:form>
 	
-		<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-</h:head>
-<h:body>
-	<h:form id="pesquisaForm">
-		<h:outputText value="Pesquisar Grupo"/>
-		<h:inputText value="#{grupoMB.nomeGrupo}"/>
-		<h:commandButton  action="#{grupoMB.pesquisarGrupo}" value="Pesquisar"/>
-	
-		<p:dataTable id="listaGrupos" var="lista" value="#{grupoMB.listaGrupos}" >
-			
-		    <h:column>
+	<h:form id="tableForm">
+		<p:dataTable id="listaGrupos" var="lista" value="#{grupoMB.listaGrupos}" >			
+		    <p:column>
 		      <f:facet name="header">
               	<h:outputText value="Nome do grupo"/>
               </f:facet>
-		        <h:outputText value="#{lista.nome}" />
-		    </h:column>
-		    <h:column>
+		        <a href="grupoDetalhes.xhtml?grupo=#{lista.idGrupo}"><h:outputText value="#{lista.nome}" /></a>
+		    </p:column>
+		    <p:column>
 			    <f:facet name="header">
 	              	<h:outputText value="Descrição do grupo"/>
 	              </f:facet>
 		        <h:outputText value="#{lista.descricao}" />
-		    </h:column>
-		    <h:column>
-      			<h:commandButton action="#{grupoMB.associarAoGrupo}" value="Entrar no grupo">
-      				<f:param value="#{lista.idGrupo}" name="id"/>
-      				<f:setPropertyActionListener value="#{lista.idGrupo}" target="#{grupoMB.idGrupoSelected}"/>
-      			</h:commandButton>
-      		</h:column>
+		    </p:column>
     	</p:dataTable>
-    
+    </h:form>
     <p:commandButton type="submit" action="#{grupoMB.listarMeusGrupo}" value="Meus Grupos"/>
-    
-	</h:form>
-</h:body>
-</html>
-
-    
-    <h:commandButton type="submit" action="#{grupoMB.listarMeusGrupo}" value="Meus Grupos"/>
-    
-	</h:form>
+	
 </h:body>
 </html>

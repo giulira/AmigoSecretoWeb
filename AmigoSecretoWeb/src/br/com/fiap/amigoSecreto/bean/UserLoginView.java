@@ -29,19 +29,31 @@ public class UserLoginView {
 	}
    
 	public String validarUsuario() throws Exception{
-   		usuario = dao.buscaUsuarioLogin(usuario.getUsername(), usuario.getSenha());
-		if(usuario != null){
-			return "menu.xhtml";
-		} else {
-			FacesContext context = FacesContext.getCurrentInstance();
-			FacesMessage msg = new FacesMessage();
-			msg.setSummary("Erro Login: ");
-			msg.setDetail("Usuário ou senha inválidos");
-			msg.setSeverity(FacesMessage.SEVERITY_FATAL);
+   		try{
+   			usuario = dao.buscaUsuarioLogin(usuario.getUsername(), usuario.getSenha());
+			if(usuario != null){
+				return "menu.xhtml";
+			} else {
+				FacesContext context = FacesContext.getCurrentInstance();
+				FacesMessage msg = new FacesMessage();
+				msg.setSummary("Erro Login: ");
+				msg.setDetail("Usuario ou senha invalidos");
+				msg.setSeverity(FacesMessage.SEVERITY_FATAL);
+				
+				context.addMessage(null, msg);
+				return "login.xhtml";
+			} 
 			
-			context.addMessage(null, msg);
-			return "login.xhtml";
-		}    
+   		} catch (Exception e){
+				FacesContext context = FacesContext.getCurrentInstance();
+				FacesMessage msg = new FacesMessage();				
+				msg.setSummary("Erro Login: ");
+				msg.setDetail("Usuario ou senha invalidos");
+				msg.setSeverity(FacesMessage.SEVERITY_FATAL);
+				
+				context.addMessage(null, msg);
+				return "login.xhtml";
+		}
         
     }
     

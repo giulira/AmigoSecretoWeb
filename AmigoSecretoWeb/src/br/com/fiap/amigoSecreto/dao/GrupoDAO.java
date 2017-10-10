@@ -26,7 +26,7 @@ public class GrupoDAO  extends GenericDao<Grupo> {
 			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g where g.nome = :nome ", Grupo.class);
 
 			query.setParameter("nome", chave);
-
+			
 			return query.getSingleResult();
 		} catch (NoResultException e) {
 			return null;
@@ -57,9 +57,10 @@ public class GrupoDAO  extends GenericDao<Grupo> {
 			em = JpaUtil.getEntityManager();
 			em.getTransaction().begin();
 
-			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g JOIN g.usuarios u where u.idUsuario = :id ", Grupo.class);
+			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g JOIN g.usuarios u where u.idUsuario = :id and g.empresa = :idEmpresa", Grupo.class);
 
 			query.setParameter("id", usuario.getIdUsuario());
+			query.setParameter("idEmpresa", usuario.getEmpresa());
 
 			return query.getResultList();
 		} catch (NoResultException e) {
@@ -68,16 +69,17 @@ public class GrupoDAO  extends GenericDao<Grupo> {
 		
 	}
 	
-	public List<Grupo> listarGrupo(String chave){
+	public List<Grupo> listarGrupo(String chave, Usuario usuario){
 		List<Grupo> listaGrupos = new ArrayList<Grupo>();
 		try {
 
 			em = JpaUtil.getEntityManager();
 			em.getTransaction().begin();
 
-			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g where g.nome like :nome ", Grupo.class);
+			TypedQuery<Grupo> query = em.createQuery("select g from Grupo g where g.nome like :nome and g.empresa = :idEmpresa", Grupo.class);
 
 			query.setParameter("nome", "%"+chave+ "%");
+			query.setParameter("idEmpresa", usuario.getEmpresa());
 			listaGrupos = query.getResultList();
 			return listaGrupos;
 			
